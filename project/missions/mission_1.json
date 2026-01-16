@@ -1,0 +1,56 @@
+{
+  "mission_id": 1,
+  "title": "Meeting the Baker",
+  "description": "Learn basic introductions and simple nouns",
+  "difficulty": "beginner",
+  "prerequisite": null,
+  "reward_xp": 10,
+  "reward_badge": "basic_conversation_badge",
+  "vocabulary_introduced": ["hello", "name", "bread", "apple", "milk", "water"],
+  "grammar_focus": ["SVO word order", "simple present (want)"],
+  "stages": [
+    {
+      "stage_id": 1,
+      "type": "dialogue_introduction",
+      "npc": "Ben",
+      "npc_text": "Hello! Welcome to Wordville. I am Ben. What is your name?",
+      "goal": "Introduce yourself",
+      "input_type": "text_free",
+      "expected_response": null,
+      "allowed_patterns": ["My name is [A-Za-z]+", "I am [A-Za-z]+", "I'm [A-Za-z]+"],
+      "examples": ["My name is Alex", "I am Maria", "I'm John"],
+      "hints": ["Start with 'My name is...' or 'I am...'"],
+      "max_attempts": 3
+    },
+    {
+      "stage_id": 2,
+      "type": "multiple_choice",
+      "npc": "Baker Ben",
+      "npc_text": "My friend Emma wants bread. But I forget... What does Tom want? Can you ask him? Choose how to ask:",
+      "goal": "Form a correct question",
+      "input_type": "inline_keyboard",
+      "expected_response": "What do you want?",
+      "options": [
+        {"text": "What you want?", "correct": false},
+        {"text": "What do you want?", "correct": true},
+        {"text": "You want what?", "correct": false}
+      ]
+    },
+    {
+      "stage_id": 3,
+      "type": "pattern_completion",
+      "npc": "Baker Ben",
+      "npc_text": "Now tell me what Tom wants. Write the sentence:",
+      "goal": "Write sentence about Tom",
+      "input_type": "text_free",
+      "expected_response": "Tom wants milk.",
+      "allowed_patterns": ["Tom wants milk\\.?", "Tom want milk\\.?"],
+      "examples": ["Tom wants milk.", "He wants milk."],
+      "validation_rules": {
+        "requires_verb_form": "wants",
+        "requires_object": "milk",
+        "allow_articles": false
+      }
+    }
+  ]
+}
